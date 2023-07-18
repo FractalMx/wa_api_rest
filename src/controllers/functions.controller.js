@@ -5,10 +5,10 @@ const mytoken = process.env.MYTOKEN;
 
 FuncCtrl.getWebhook = (req, res) => {
     try {
-        console.log(req.query)
-        let mode =  req.query("hub.mode");
-        let challenge = req.query("hub.challenge");
-        let token = req.query("hub.verify_token");
+        console.log(req.query["hub.verify_token"])
+        let mode =  req.query["hub.mode"];
+        let challenge = req.query["hub.challenge"];
+        let token = req.query["hub.verify_token"];
     
         if(mode && token){
             if(mode === "subscribe" && token === mytoken){
