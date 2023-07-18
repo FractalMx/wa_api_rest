@@ -28,7 +28,8 @@ FuncCtrl.postWebhook = (req, res) => {
         let body_param = req.body;
       
 
-
+        console.log("postWebhook",body_param);
+        console.log("postWebhook",body_param.object);
         if(body_param.object ){
             if(body_param.entry && 
                 body_param.entry[0].changes[0].value.message && 
@@ -38,7 +39,7 @@ FuncCtrl.postWebhook = (req, res) => {
                 
                 let from = body_param.entry[0].changes[0].value.messages[0].from; 
                 let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
-                console.log("postWebhook",phone_no_id, from, msg_body);
+               
                 axios({
                     method:"POST",
                     url:"https://graph.facebook.com/v17.0/" + phone_no_id + "/message?access_token="+ token,
