@@ -28,13 +28,14 @@ FuncCtrl.postWebhook = (req, res) => {
         let body_param = req.body;
       
 
-        console.log("postWebhook",body_param);
+    
         console.log("postWebhook",body_param.object);
         if(body_param.object ){
             if(body_param.entry && 
                 body_param.entry[0].changes[0].value.message && 
                 body_param.entry[0].changes[0].value.message
             ){
+                console.log("postWebhook",body_param.entry[0].changes[0]);
                 let phone_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                 
                 let from = body_param.entry[0].changes[0].value.messages[0].from; 
