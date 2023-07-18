@@ -41,17 +41,25 @@ FuncCtrl.postWebhook = (req, res) => {
                 let from = body_param.entry[0].changes[0].value.messages[0].from; 
                 let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
                 console.log("postWebhook",phone_no_id,from, msg_body);
+                let data = JSON.stringify({
+                    "messaging_product": "whatsapp",
+                    "to": phone_no_id,
+                    "type": "template",
+                    "template": {
+                      "name": "HELLO MY NIGGGA",
+                      "language": {
+                        "code": "en_US"
+                      }
+                    },
+                    text:{
+                        body:"Hola mijis "
+                    } 
+                  });
                 axios({
                     method:"POST",
+                 
                     url:"https://graph.facebook.com/v17.0/" + phone_no_id + "/messages",
-                    data:{
-                        messaging_product: "whatsapp", 
-                        to:from,
-                        text:{
-                            body:"Hola mijis "
-                        } 
-    
-                    },
+                    data:data,
                     headers:{
                         "Content-Type":"application/json",
                         'Authorization': 'Bearer' + token
