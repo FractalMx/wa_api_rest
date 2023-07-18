@@ -1,6 +1,8 @@
 const FuncCtrl = {};
 
 
+//const token = process.env.TOKEN;
+const mytoken = process.env.MYTOKEN;
 
 FuncCtrl.getWebhook = (req, res) => {
     try {
@@ -25,7 +27,7 @@ FuncCtrl.getWebhook = (req, res) => {
 FuncCtrl.postWebhook = (req, res) => {
     try {
         let body_param = req.body;
-        console.log(JSON.stringify(body_param, null, 2));
+        
         if(body_param.object ){
             if(body_param.entry && 
                 body_param.entry[0].changes[0].value.message && 
