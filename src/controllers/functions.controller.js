@@ -45,20 +45,14 @@ FuncCtrl.postWebhook = (req, res) => {
                 let data = JSON.stringify({
                     "messaging_product": "whatsapp",
                     "to": newFrom,
-                    "type": "template",
-                    "template": {
-                      "name": "HELLO MY NIGGGA",
-                      "language": {
-                        "code": "en_US"
-                      }
-                    },
-                    text:{
-                        body:"Hola mijis "
+
+                    "text":{
+                        "body":"Hola mijis "
                     } 
                   });
                 axios({
                     method:"POST",
-                 
+                    maxBodyLength: Infinity,
                     url:"https://graph.facebook.com/v17.0/" + phone_no_id + "/messages",
                     data:data,
                     headers:{
