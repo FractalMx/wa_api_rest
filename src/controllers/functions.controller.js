@@ -41,7 +41,7 @@ FuncCtrl.postWebhook = (req, res) => {
                 let from = body_param.entry[0].changes[0].value.messages[0].from; 
                 let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
                 console.log("postWebhook",phone_no_id,from, msg_body);
-                let newFrom = from.substring(0,2) + from.substring(3,from.length-1);
+                let newFrom = from.substring(0,2) + from.substring(3,from.length);
                 let data = JSON.stringify({
                     "messaging_product": "whatsapp",
                     "to": newFrom,
