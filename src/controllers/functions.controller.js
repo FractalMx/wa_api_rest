@@ -1,12 +1,11 @@
 const FuncCtrl = {};
 
-
-//const token = process.env.TOKEN;
+const token = process.env.TOKEN;
 const mytoken = process.env.MYTOKEN;
 
 FuncCtrl.getWebhook = (req, res) => {
     try {
-        console.log(req)
+        console.log(req.query)
         let mode =  req.query("hub.mode");
         let challenge = req.query("hub.challenge");
         let token = req.query("hub.verify_token");
