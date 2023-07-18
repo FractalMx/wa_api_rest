@@ -29,19 +29,18 @@ FuncCtrl.postWebhook = (req, res) => {
       
 
     
-        console.log("postWebhook",body_param.object);
-        console.log("postWebhook",body_param.entry[0].changes[0]);
+        
         if(body_param.object ){
             if(body_param.entry && 
-                body_param.entry[0].changes[0].value.message && 
-                body_param.entry[0].changes[0].value.message
+                body_param.entry[0].changes[0].value.messages && 
+                body_param.entry[0].changes[0].value.messages
             ){
               
                 let phone_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
                 
                 let from = body_param.entry[0].changes[0].value.messages[0].from; 
                 let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
-               
+                console.log("postWebhook",phone_no_id,from, msg_body);
                 axios({
                     method:"POST",
                     url:"https://graph.facebook.com/v17.0/" + phone_no_id + "/message?access_token="+ token,
