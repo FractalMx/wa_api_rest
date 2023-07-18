@@ -45,21 +45,27 @@ FuncCtrl.postWebhook = (req, res) => {
                 let data = JSON.stringify({
                     "messaging_product": "whatsapp",
                     "to": newFrom,
-
-                    "text":{
-                        "body":"Hola mijis "
-                    } 
-                  });
-                axios({
-                    method:"POST",
-                    maxBodyLength: Infinity,
-                    url:"https://graph.facebook.com/v17.0/" + phone_no_id + "/messages",
-                    data:data,
-                    headers:{
-                        "Content-Type":"application/json",
-                        'Authorization': 'Bearer' + token
+                    "text": {
+                      "body": "Hola mijis "
                     }
+                  });
+                  let config = {
+                    method: 'post',
+                    maxBodyLength: Infinity,
+                    url: 'https://graph.facebook.com/v17.0/' + phone_no_id + '/messages',
+                    headers: { 
+                      'Content-Type': 'application/json', 
+                      'Authorization': 'Bearer ' + token
+                    },
+                    data : data
+                  };
+               axios.request(config)
+                .then((response) => {
+                console.log(JSON.stringify(response.data));
                 })
+                .catch((error) => {
+                console.log(error);
+                });
                 res.sendStatus(200);
             }else{
                 res.sendStatus(404);
