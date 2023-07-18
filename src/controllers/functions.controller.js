@@ -1,5 +1,5 @@
 const FuncCtrl = {};
-
+const axios = require('axios');
 const token = process.env.TOKEN;
 const mytoken = process.env.MYTOKEN;
 
