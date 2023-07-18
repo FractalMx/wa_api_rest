@@ -26,7 +26,9 @@ FuncCtrl.getWebhook = (req, res) => {
 FuncCtrl.postWebhook = (req, res) => {
     try {
         let body_param = req.body;
-        console.log("postWebhook",req)
+        console.log("postWebhook",req);
+
+        
         if(body_param.object ){
             if(body_param.entry && 
                 body_param.entry[0].changes[0].value.message && 
